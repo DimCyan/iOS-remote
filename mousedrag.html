@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf8">
+    <title>js拖拽效果</title>
+    <style type="text/css">
+        #div1 {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            background: #99dd33;
+            cursor: move;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+</body>
+<script type="text/javascript">
+    window.onload = function () {
+        var x = y = 0;
+        var disX = disY = 0;
+        var div1 = document.getElementById("div1");
+
+        div1.onmousedown = function (e) {
+            var evnt = e || event;
+            disX = evnt.clientX - div1.offsetLeft;
+            disY = evnt.clientY - div1.offsetTop;
+
+            document.onmousemove = function (e) {
+                var evnt = e || event;
+                var x = evnt.clientX - disX;
+                var y = evnt.clientY - disY;
+                var window_width = document.documentElement.clientWidth - div1.offsetWidth;
+                var window_height = document.documentElement.clientHeight - div1.offsetHeight;
+
+                x = (x < 0) ? 0 : x;
+                x = (x > window_width) ? window_width : x;
+                y = (y < 0) ? 0 : y;
+                y = (y > window_height) ? window_height : y;
+
+                document.onmouseup = function () {
+                    if (x){
+                        console.log('click: '+disX+' move: '+x)
+                    }
+                    document.onmousemove = null;
+                    document.onmouup = null;
+                };
+            };
+
+            document.onmouseup = function () {
+                if (disX){
+                    console.log('click: '+disX)
+                }
+                document.onmousemove = null;
+                document.onmouup = null;
+            };
+
+            return false;
+        };
+    };
+</script>
+
+</html>
