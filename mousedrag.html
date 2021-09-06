@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf8">
-    <title>js拖拽效果</title>
+    <title>js drag</title>
+    <script src = "https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"> </script>
     <style type="text/css">
         #div1 {
             width: 200px;
@@ -31,19 +32,12 @@
 
             document.onmousemove = function (e) {
                 var evnt = e || event;
-                var x = evnt.clientX - disX;
-                var y = evnt.clientY - disY;
-                var window_width = document.documentElement.clientWidth - div1.offsetWidth;
-                var window_height = document.documentElement.clientHeight - div1.offsetHeight;
-
-                x = (x < 0) ? 0 : x;
-                x = (x > window_width) ? window_width : x;
-                y = (y < 0) ? 0 : y;
-                y = (y > window_height) ? window_height : y;
+                var x = evnt.clientX - div1.offsetLeft;
+                var y = evnt.clientY - div1.offsetTop;
 
                 document.onmouseup = function () {
-                    if (x){
-                        console.log('click: '+disX+' move: '+x)
+                    if (x) {
+                        console.log('click: ' + disX + ' , ' + disY + ' to: ' + x + ' , ' + y)
                     }
                     document.onmousemove = null;
                     document.onmouup = null;
@@ -51,8 +45,8 @@
             };
 
             document.onmouseup = function () {
-                if (disX){
-                    console.log('click: '+disX)
+                if (disX) {
+                    console.log('click: ' + disX + ' , ' + disY)
                 }
                 document.onmousemove = null;
                 document.onmouup = null;
