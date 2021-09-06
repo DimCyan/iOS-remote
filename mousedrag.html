@@ -27,7 +27,6 @@
         var eleH = o.offsetHeight;
         var eleW = o.offsetWidth;
         console.log('H: ' + eleH + ' W:' + eleW)
-        var x = y = 0;
         var disX = disY = 0;
         var div1 = document.getElementById("remote");
 
@@ -45,10 +44,10 @@
                     if (x || y) {
                         var data = data = {
                             data: JSON.stringify({
-                                'disX': disX,
-                                'disY': disY,
-                                'toX': x,
-                                'toY': y
+                                'disX': (disX / eleW).toFixed(2),
+                                'disY': (disY / eleH).toFixed(2),
+                                'toX': (x / eleW).toFixed(2),
+                                'toY': (y / eleH).toFixed(2)
                             }),
                         }
                         console.log('click: ' + disX + ' , ' + disY + ' to: ' + x + ' , ' + y)
@@ -68,8 +67,8 @@
                 if (disX || disY) {
                     var data = data = {
                         data: JSON.stringify({
-                            'disX': disX,
-                            'disY': disY
+                            'disX': (disX / eleW).toFixed(2),
+                            'disY': (disY / eleH).toFixed(2)
                         }),
                     }
                     console.log('click: ' + disX + ' , ' + disY)
