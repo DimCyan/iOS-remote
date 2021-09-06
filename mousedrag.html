@@ -35,12 +35,12 @@
             disX = evnt.clientX - div1.offsetLeft;
             disY = evnt.clientY - div1.offsetTop;
 
-            document.onmousemove = function (e) {
+            div1.onmousemove = function (e) {
                 var evnt = e || event;
                 var x = evnt.clientX - div1.offsetLeft;
                 var y = evnt.clientY - div1.offsetTop;
 
-                document.onmouseup = function () {
+                div1.onmouseup = function () {
                     if (x || y) {
                         var data = data = {
                             data: JSON.stringify({
@@ -58,12 +58,12 @@
                             dataType: 'json',
                         })
                     }
-                    document.onmousemove = null;
-                    document.onmouup = null;
+                    div1.onmousemove = null;
+                    div1.onmouup = null;
                 };
             };
 
-            document.onmouseup = function () {
+            div1.onmouseup = function () {
                 if (disX || disY) {
                     var data = data = {
                         data: JSON.stringify({
@@ -79,8 +79,8 @@
                         dataType: 'json',
                     })
                 }
-                document.onmousemove = null;
-                document.onmouup = null;
+                div1.onmousemove = null;
+                div1.onmouup = null;
             };
 
             return false;
