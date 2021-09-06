@@ -4,14 +4,15 @@
 <head>
     <meta charset="utf8">
     <title>js drag</title>
-    <script src = "https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"> </script>
     <style type="text/css">
-        body{
+        body {
             text-align: center;
         }
+
         img {
-            width: 70%;
-            height: 70%;
+            width: 50%;
+            height: 50%;
             cursor: move;
         }
     </style>
@@ -22,6 +23,10 @@
 </body>
 <script type="text/javascript">
     window.onload = function () {
+        var o = document.getElementById('remote');
+        var eleH = o.offsetHeight;
+        var eleW = o.offsetWidth;
+        console.log('H: ' + eleH + ' W:' + eleW)
         var x = y = 0;
         var disX = disY = 0;
         var div1 = document.getElementById("remote");
@@ -38,7 +43,21 @@
 
                 document.onmouseup = function () {
                     if (x || y) {
+                        var data = data = {
+                            data: JSON.stringify({
+                                'disX': disX,
+                                'disY': disY,
+                                'toX': x,
+                                'toY': y
+                            }),
+                        }
                         console.log('click: ' + disX + ' , ' + disY + ' to: ' + x + ' , ' + y)
+                        $.ajax({
+                            url: 'http://localhost:5000/drag',
+                            type: 'POST',
+                            data: data,
+                            dataType: 'json',
+                        })
                     }
                     document.onmousemove = null;
                     document.onmouup = null;
@@ -46,8 +65,20 @@
             };
 
             document.onmouseup = function () {
-                if (disX) {
+                if (disX || disY) {
+                    var data = data = {
+                        data: JSON.stringify({
+                            'disX': disX,
+                            'disY': disY
+                        }),
+                    }
                     console.log('click: ' + disX + ' , ' + disY)
+                    $.ajax({
+                        url: 'http://localhost:5000/click',
+                        type: 'POST',
+                        data: data,
+                        dataType: 'json',
+                    })
                 }
                 document.onmousemove = null;
                 document.onmouup = null;
