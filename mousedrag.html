@@ -6,29 +6,58 @@
     <title>js drag</title>
     <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"> </script>
     <style type="text/css">
-        body {
+        /* body {
+            text-align: center;
+        } */
+        .remote-main{
             text-align: center;
         }
 
         img {
+            border-radius: 10px;
             width: 50%;
             height: 50%;
             cursor: move;
+        }
+
+        .remote-btn{
+            position: fixed;
+            right: 20%;
+            top: 35%;
+            width: 40px;
+        }
+        a{
+            text-align: center;
+            width: 10px;
+            height: 10px;
+            border-bottom: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+
+            font-size: 200%;
+            text-decoration: none;
         }
     </style>
 </head>
 
 <body>
+<div class="remote-main">
     <img id="remote" src="http://127.0.0.1:8100/">
+    <div class="remote-btn">
+        <a class="home" href="javascript:void(0)">🔒</a>
+        <a class="power" href="javascript:void(0)">🔘</a>
+        <a class="rotation" href="javascript:void(0)">🔁</a>
+        <a class="rotation" href="javascript:void(0)">🚀</a>
+    </div>
+</div>
 </body>
 <script type="text/javascript">
     window.onload = function () {
-        var o = document.getElementById('remote');
-        var eleH = o.offsetHeight;
-        var eleW = o.offsetWidth;
+        var div1 = document.getElementById("remote");
+        var eleH = div1.offsetHeight;
+        var eleW = div1.offsetWidth;
         console.log('H: ' + eleH + ' W:' + eleW)
         var disX = disY = 0;
-        var div1 = document.getElementById("remote");
 
         div1.onmousedown = function (e) {
             var evnt = e || event;
