@@ -18,15 +18,13 @@
 </head>
 
 <body>
-    <div id="div1">
-        <img src="http://127.0.0.1:8100/">
-    </div>
+    <img id="remote" src="http://127.0.0.1:8100/">
 </body>
 <script type="text/javascript">
     window.onload = function () {
         var x = y = 0;
         var disX = disY = 0;
-        var div1 = document.getElementById("div1");
+        var div1 = document.getElementById("remote");
 
         div1.onmousedown = function (e) {
             var evnt = e || event;
@@ -39,7 +37,7 @@
                 var y = evnt.clientY - div1.offsetTop;
 
                 document.onmouseup = function () {
-                    if (x) {
+                    if (x || y) {
                         console.log('click: ' + disX + ' , ' + disY + ' to: ' + x + ' , ' + y)
                     }
                     document.onmousemove = null;
