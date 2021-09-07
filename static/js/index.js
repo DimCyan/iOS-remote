@@ -60,4 +60,19 @@ window.onload = function () {
 
         return false;
     };
+    $(".send").click(function(){
+        var content = $("#main-send").val();
+        var data = data = {
+            data: JSON.stringify({
+                'text': content,
+            }),
+        }
+        console.log('send: ' + content)
+        $.ajax({
+            url: 'http://localhost:5000/send',
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+        })
+    })
 };

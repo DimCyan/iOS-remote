@@ -31,5 +31,13 @@ def drag():
     return "click and drag it"
 
 
+@app.route('/send', methods=['POST'])
+def send():
+    data = json.loads(request.form.get('data'))
+    content = data['text']
+    print('send text content: {}'.format(content))
+    return "send text"
+
+
 if __name__ == '__main__':
     app.run(debug=True)
