@@ -2,13 +2,13 @@ from flask import Flask, request, render_template
 from flask_cors import *
 import json
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='static')
 CORS(app, support_crenditals=True)
 
 
 @app.route('/')
 def index():
-    return render_template('mousedrag.html')
+    return render_template('index.html')
 
 
 @app.route('/click', methods=['POST'])
