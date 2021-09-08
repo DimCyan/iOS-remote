@@ -38,6 +38,7 @@ def drag():
 @app.route('/home', methods=['POST'])
 def home():
     client.home()
+    client.orientation = 'PORTRAIT'
     logger.info('Back to home')
     return "back to home"
 
