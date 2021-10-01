@@ -60,7 +60,7 @@ window.onload = function () {
 
         return false;
     };
-    $(".send").click(function(){
+    function sendKeys(){
         var content = $("#main-send").val();
         var data = {
             data: JSON.stringify({
@@ -74,7 +74,7 @@ window.onload = function () {
             data: data,
             dataType: 'json',
         })
-    });
+    };
     $(".home").click(function(){
         console.log('click home buttom')
         $.ajax({
