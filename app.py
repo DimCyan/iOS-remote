@@ -50,6 +50,13 @@ def lock():
     return "press lock button"
 
 
+@app.route('/screenshot', methods=['POST'])
+def screenshot():
+    client.screenshot('./static/')
+    logger.info('Press screenshot button to screenshot')
+    return "press screenshot button"
+
+
 @app.route('/rotation', methods=['POST'])
 def rotation():
     orientation = client.orientation

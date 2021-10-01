@@ -89,6 +89,13 @@ window.onload = function () {
             type: 'POST',
         })
     });
+    $(".screenshot").click(function(){
+        console.log('click screenshot buttom')
+        $.ajax({
+            url: 'http://localhost:5000/screenshot',
+            type: 'POST',
+        })
+    });
     $(".rotation").click(function(){
         console.log('switch orientation')
         $.ajax({
