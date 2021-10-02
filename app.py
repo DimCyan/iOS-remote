@@ -1,16 +1,16 @@
 from flask import Flask, request, render_template
-from flask_cors import *
+from flask_cors import CORS
 import json
 import wda
 from logzero import logger
 
 app = Flask(__name__, template_folder='static')
-CORS(app, support_crenditals=True)
+CORS(app, support_crenditals=True, resources={r"/*": {"origins": "*"}}, send_wildcard=True)
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('test.html')
 
 
 @app.route('/click', methods=['POST'])
@@ -18,6 +18,7 @@ def click():
     data = json.loads(request.form.get('data'))
     disX = float(data['disX'])
     disY = float(data['disY'])
+    print(disX, disY)
     client.click(disX, disY)
     logger.info('click: ({}, {})'.format(disX, disY))
     return "click it"
@@ -31,7 +32,7 @@ def drag():
     toX = float(data['toX'])
     toY = float(data['toY'])
     client.swipe(x1=disX, y1=disY, x2=toX, y2=toY, duration=0)
-    logger.info('click: ({}, {}) and drag to: ({}, {})'.format(disX, disY, toX, toY))
+    logger.info('drag: ({}, {}) and drag to: ({}, {})'.format(disX, disY, toX, toY))
     return "click and drag it"
 
 

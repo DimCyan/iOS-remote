@@ -7,12 +7,12 @@ window.onload = function () {
         var eleH = div1.offsetHeight;
         var eleW = div1.offsetWidth;
         console.log('H: ' + eleH + ' W:' + eleW)
-        disX = evnt.clientX - div1.offsetLeft;
+        disX = evnt.offsetX - div1.offsetLeft;
         disY = evnt.offsetY - div1.offsetTop;
 
         div1.onmousemove = function (e) {
             var evnt = e || event;
-            var x = evnt.clientX - div1.offsetLeft;
+            var x = evnt.offsetX - div1.offsetLeft;
             var y = evnt.offsetY - div1.offsetTop;
 
             div1.onmouseup = function () {
@@ -25,7 +25,7 @@ window.onload = function () {
                             'toY': (y / eleH).toFixed(2)
                         }),
                     }
-                    console.log('click: ' + disX + ' , ' + disY + ' to: ' + x + ' , ' + y)
+                    console.log('drag: ' + disX + ' , ' + disY + ' to: ' + x + ' , ' + y)
                     $.ajax({
                         url: 'http://localhost:5000/drag',
                         type: 'POST',
