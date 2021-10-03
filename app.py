@@ -2,6 +2,8 @@ from flask import Flask, request, render_template
 from flask_cors import CORS
 import json
 import wda
+import time
+import os
 from logzero import logger
 
 app = Flask(__name__, template_folder='static')
@@ -53,7 +55,8 @@ def lock():
 
 @app.route('/screenshot', methods=['POST'])
 def screenshot():
-    client.screenshot('./static/')
+    screenshot_name = time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
+    os.system(f'tidevice screenshot {path}/screenshot/{screenshot_name}.png')
     logger.info('Press screenshot button to screenshot')
     return "press screenshot button"
 
@@ -79,12 +82,14 @@ def send():
 
 
 if __name__ == '__main__':
-    with open('device.json', 'r', encoding='utf-8') as f:
-        json_data = json.load(f)
-        udid = json_data.get('udid')
-        wda_bundle_id = json_data.get('wda_bundle_id')
-    client = wda.USBClient(
-        udid=udid,
-        port=8100,
-        wda_bundle_id=wda_bundle_id)
+    # with open('device.json', 'r', encoding='utf-8') as f:
+    #     json_data = json.load(f)
+    #     udid = json_data.get('udid')
+    #     wda_bundle_id = json_data.get('wda_bundle_id')
+    # client = wda.USBClient(
+    #     udid=udid,
+    #     port=8100,
+    #     wda_bundle_id=wda_bundle_id)
+    path = os.path.abspath('')
+    client = wda.USBClient()
     app.run(debug=True)
