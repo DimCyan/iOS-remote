@@ -60,21 +60,27 @@ window.onload = function () {
 
         return false;
     };
-    function sendKeys(){
-        var content = $("#main-send").val();
-        var data = {
-            data: JSON.stringify({
-                'text': content,
-            }),
-        }
-        console.log('send: ' + content)
-        $.ajax({
-            url: 'http://localhost:5000/send',
-            type: 'POST',
-            data: data,
-            dataType: 'json',
+    $("#main-send").focus(function (){
+        $("#main-send").keydown(function (e){
+            if (e.keyCode==13 && e.ctrlKey==1){
+                console.log('ctrl+enter!!!');
+                var content = $("#main-send").val();
+                var data = {
+                    data: JSON.stringify({
+                        'text': content,
+                    }),
+                };
+                console.log('send: ' + content);
+                $.ajax({
+                    url: 'http://localhost:5000/send',
+                    type: 'POST',
+                    data: data,
+                    dataType: 'json',
+                });
+                $("#main-send").val("");
+            }
         })
-    };
+    });
     $(".home").click(function(){
         console.log('click home buttom')
         $.ajax({
