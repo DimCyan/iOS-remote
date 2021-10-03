@@ -46,6 +46,20 @@ def home():
     return "back to home"
 
 
+@app.route('/backspace', methods=['POST'])
+def backspace():
+    client.send_keys('\b')
+    logger.info('Click backspace')
+    return "click backspace"
+
+
+@app.route('/enter', methods=['POST'])
+def enter():
+    client.send_keys('\n')
+    logger.info('Click enter')
+    return "click enter"
+
+
 @app.route('/lock', methods=['POST'])
 def lock():
     client.lock()

@@ -78,7 +78,22 @@ window.onload = function () {
                     dataType: 'json',
                 });
                 $("#main-send").val("");
-            }
+            };
+            if (e.keyCode==8 && e.ctrlKey==1){
+                console.log('backspace!!!');
+                $.ajax({
+                    url: 'http://localhost:5000/backspace',
+                    type: 'POST',
+                });
+            };
+            if (e.keyCode==13 && e.shiftKey==1){
+                console.log('enter!!!');
+                $.ajax({
+                    url: 'http://localhost:5000/enter',
+                    type: 'POST',
+                });
+                $("#main-send").val("");
+            };
         })
     });
     $(".home").click(function(){
