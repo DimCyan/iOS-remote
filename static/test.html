@@ -1,54 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iOS Remote</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf8">
+    <title>iOS Win Remote</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"> </script>
-    <script src="static/js/index.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row clearfix">
-            <div class="col-md-12 column">
-                <nav class="navbar navbar-default" role="navigation">
-                    <div class="navbar-header"> 
-                        <a class="navbar-brand" href="#">iOS Remote</a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <form class="navbar-form navbar-left" role="search">
-                            <div class="form-group">
-                                <input type="text" class="form-control"/>
-                            </div> 
-                            <button type="submit" class="btn btn-default">Connect&#128279;</button>
-                        </form>  
-                    </div>
-                </nav>
-            </div>
+    <div class="remote-main">
+        <img id="remote" src="http://127.0.0.1:8100/">
+        <div class="remote-btn">
+            <a class="lock" href="javascript:void(0)">🔒</a>
+            <a class="home" href="javascript:void(0)">🔘</a>
+            <a class="rotation" href="javascript:void(0)">🔁</a>
+            <a class="send" href="javascript:void(0)">🚀</a>
         </div>
-        <div class="row clearfix">
-            <div class="col-md-10 column">
-                <img alt="No Source Please Check!" id="remote" src="http://127.0.0.1:8100/" class="img-rounded" style="width: 75%; height: 75%;"/>
-            </div>
-            <div class="col-md-2 column">
-                <!-- locked: 128274 -->
-                <button type="button" class="btn btn-lg btn-block lock">Lock &#128275;</button>
-                <button type="button" class="btn btn-lg btn-block home">Home &#127968;</button>
-                <button type="button" class="btn btn-lg btn-block rotation">Rotation &#128260;</button>
-                <button type="button" class="btn btn-lg btn-block screenshot">Screenshot &#128248;</button>
-                <hr>
-                <form role="form">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Send keys &#9997;</label>
-                        <textarea id="main-send" cols="20" rows="5"></textarea>
-                        <p class="help-block">Press [Ctrl+Enter] to send; [Ctrl+Backspace] to delete; [Shift+Enter] to insert a newline;</p>
-                    </div>
-                </form>
-            </div>
+        <div class="send-text">
+            <textarea name="main-send" id="main-send" cols="28" rows="5"
+                placeholder="Text content to be sent" onfocus="this.placeholder=''" onblur="this.placeholder='Text content to be sent'"></textarea>
         </div>
     </div>
 </body>

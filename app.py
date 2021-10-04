@@ -12,7 +12,7 @@ CORS(app, support_crenditals=True, resources={r"/*": {"origins": "*"}}, send_wil
 
 @app.route('/')
 def index():
-    return render_template('test.html')
+    return render_template('index.html')
 
 
 @app.route('/click', methods=['POST'])
