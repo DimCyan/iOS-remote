@@ -1,6 +1,6 @@
 # iOS-remote
 
-iOS-remote connects to iOS devices via USB or display and control in web broswer. It does NOT require the jailbreaking. Because of displaying in web broswer, iOS-remote supports Linux, macOS, Windows.
+iOS-remote connects to iOS devices via USB for displaying and controlling in web browser. It does NOT require jailbreaking. Because of displaying in web browser, iOS-remote supports Linux, macOS, Windows.
 
 ## iOS Version Support
 
@@ -8,7 +8,7 @@ The support of this project depends on the version of WebDriverAgent. After test
 
 ## Download & Use
 
-There are some necessary librarise and tools for this project:
+There are some necessary libraries and tools for this project:
 
 1. [WebDriverAgent](https://github.com/appium/WebDriverAgent)
 
@@ -40,7 +40,7 @@ After installing and preparing the environment, run following command in your te
 
     ```python3 app.py```
 
-5. Open Broswer With URL `http://127.0.0.1:5000/`
+5. Open Browser With URL `http://127.0.0.1:5000/`
 
 ## Features
 
@@ -58,7 +58,7 @@ After installing and preparing the environment, run following command in your te
 
     - Home button
 
-    - Power botton to lock screen
+    - Power button to lock screen
 
 5. Screenshot
 
@@ -74,4 +74,4 @@ After installing and preparing the environment, run following command in your te
 
 4. Display app list
 
-5. Install and Uninstall
+5. Install and Uninstall app
