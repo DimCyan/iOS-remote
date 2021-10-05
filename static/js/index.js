@@ -60,9 +60,9 @@ window.onload = function () {
 
         return false;
     };
-    $("#main-send").focus(function (){
-        $("#main-send").keydown(function (e){
-            if (e.keyCode==13 && e.ctrlKey==1){
+    $("#main-send").focus(function () {
+        $("#main-send").keydown(function (e) {
+            if (e.keyCode == 13 && e.ctrlKey == 1) {
                 console.log('ctrl+enter!!!');
                 var content = $("#main-send").val();
                 var data = {
@@ -79,14 +79,14 @@ window.onload = function () {
                 });
                 $("#main-send").val("");
             };
-            if (e.keyCode==8 && e.ctrlKey==1){
+            if (e.keyCode == 8 && e.ctrlKey == 1) {
                 console.log('backspace!!!');
                 $.ajax({
                     url: 'http://localhost:5000/backspace',
                     type: 'POST',
                 });
             };
-            if (e.keyCode==13 && e.shiftKey==1){
+            if (e.keyCode == 13 && e.shiftKey == 1) {
                 console.log('enter!!!');
                 $.ajax({
                     url: 'http://localhost:5000/enter',
@@ -96,28 +96,31 @@ window.onload = function () {
             };
         })
     });
-    $(".home").click(function(){
+    $("#connect-stream").click(function () {
+        $("#remote").attr("src", $("#connect-input").val());
+    });
+    $(".home").click(function () {
         console.log('click home buttom')
         $.ajax({
             url: 'http://localhost:5000/home',
             type: 'POST',
         })
     });
-    $(".lock").click(function(){
+    $(".lock").click(function () {
         console.log('Press lock button')
         $.ajax({
             url: 'http://localhost:5000/lock',
             type: 'POST',
         })
     });
-    $(".screenshot").click(function(){
+    $(".screenshot").click(function () {
         console.log('click screenshot buttom')
         $.ajax({
             url: 'http://localhost:5000/screenshot',
             type: 'POST',
         })
     });
-    $(".rotation").click(function(){
+    $(".rotation").click(function () {
         console.log('switch orientation')
         $.ajax({
             url: 'http://localhost:5000/rotation',
