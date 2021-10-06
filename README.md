@@ -2,6 +2,8 @@
 
 iOS-remote connects to iOS devices via USB for displaying and controlling in web browser. It does NOT require jailbreaking. Because of displaying in web browser, iOS-remote supports Linux, macOS, Windows.
 
+![][https://github.com/SimonWDC/ios-remote/blob/34856436c8f25be78c6514bfb6b2b2413db87ab5/img/homepage.png]
+
 ## iOS Version Support
 
 The support of this project depends on the version of WebDriverAgent. After testing, iOS15 is already supported. Please using the latest [WebDriverAgent](https://github.com/appium/WebDriverAgent).
