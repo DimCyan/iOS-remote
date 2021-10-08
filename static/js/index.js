@@ -127,16 +127,12 @@ window.onload = function () {
             type: 'POST',
         })
     });
-    $("#resize").click(function () {
-        $("#remote").css("width", "100%");
-    });
-    $("#resize75").click(function () {
-        $("#remote").css("width", "75%");
-    });
-    $("#resize50").click(function () {
-        $("#remote").css("width", "50%");
-    });
-    $("#resize45").click(function () {
-        $("#remote").css("width", "45%");
+    $("#size-range").on('input propertychange', function () {
+        $('#remote').css({
+            'width': $('#size-range').val() + '%',
+            'height': $('#size-range').val() + '%'
+        });
+        $("#size-value").html("Source Size: " + $('#size-range').val() + '%');
+        console.log()
     });
 };

@@ -8,7 +8,7 @@
     <title>iOS Remote</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"> </script>
-    <script src="static/js/index.js"></script>
+    <script src="js/index.js"></script>
 </head>
 
 <body>
@@ -35,7 +35,7 @@
         <div class="row clearfix">
             <div class="col-md-10 column">
                 <img alt="No Source Please Check!" id="remote" src="http://127.0.0.1:8200/" class="img-rounded"
-                    style="width: 75%; height: 75%;" />
+                    style="width: 50%; height: 50%;" />
             </div>
             <div class="col-md-2 column">
                 <button type="button" class="btn btn-lg btn-block lock">Lock &#128275;</button>
@@ -53,11 +53,8 @@
                 </form>
                 <hr>
                 <label for="resize" id="resize">Resize Source &#127899;</label>
-                <div class="btn-group btn-group-xs">
-                    <button class="btn btn-default" type="button" id="resize75"><em class="glyphicon glyphicon glyphicon-resize-small"></em> 75%</button> 
-                    <button class="btn btn-default" type="button" id="resize50"><em class="glyphicon glyphicon glyphicon-resize-small"></em> 50%</button>
-                    <button class="btn btn-default" type="button" id="resize45"><em class="glyphicon glyphicon glyphicon-resize-small"></em> 45%</button> 
-               </div>
+                <input type="range" id="size-range">
+                <p class="help-block" id="size-value">Source Size: 50%</p>
             </div>
         </div>
     </div>
