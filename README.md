@@ -1,10 +1,10 @@
-![](https://github.com/SimonWDC/ios-remote/blob/main/img/logo.png)
+![](https://github.com/SimonWDC/ios-remote/blob/main/img/logo-1.png)
 
 # iOS-remote
 
 iOS-remote connects to iOS devices via USB for displaying and controlling in web browser. It does NOT require jailbreaking. Because of displaying in web browser, iOS-remote supports Linux, macOS, Windows.
 
-![](https://github.com/SimonWDC/ios-remote/blob/main/img/homepage.png)
+![](https://github.com/SimonWDC/ios-remote/blob/main/img/mainpage.png)
 
 ## iOS Version Support
 
