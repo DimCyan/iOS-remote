@@ -97,7 +97,19 @@ window.onload = function () {
         })
     });
     $("#connect-stream").click(function () {
-        $("#remote").attr("src", $("#connect-input").val());
+        var content = $("#connect-input").val();
+        var data = {
+            data: JSON.stringify({
+                'text': content,
+            }),
+        };
+        $.ajax({
+            url: 'http://localhost:5000/remote',
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+        });
+        $("#remote").attr("src", 'http://127.0.0.1:' + $("#connect-input").val());
     });
     $(".home").click(function () {
         console.log('click home buttom')

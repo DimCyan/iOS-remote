@@ -12,52 +12,52 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row clearfix">
-            <div class="col-md-12 column">
-                <nav class="navbar navbar-default" role="navigation">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">iOS Remote</a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <form class="navbar-form navbar-left" role="search">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="connect-input"
-                                    placeholder="http://127.0.0.1:8200/" />
-                            </div>
-                            <button type="button" class="btn btn-default" id="connect-stream"
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">iOS Remote</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="connect-input"
+                                   placeholder="Local Port" value="8200"/>
+                        </div>
+                        <button type="button" class="btn btn-default" id="connect-stream"
                                 href="#">Connect&#128279;</button>
-                        </form>
-                    </div>
-                </nav>
-            </div>
-        </div>
-        <div class="row clearfix">
-            <div class="col-md-10 column">
-                <img alt="No Source Please Check!" id="remote" src="http://127.0.0.1:8200/" class="img-rounded"
-                    style="width: 50%; height: 50%;" />
-            </div>
-            <div class="col-md-2 column">
-                <button type="button" class="btn btn-lg btn-block lock">Lock &#128275;</button>
-                <button type="button" class="btn btn-lg btn-block home">Home &#127968;</button>
-                <button type="button" class="btn btn-lg btn-block rotation">Rotation &#128260;</button>
-                <button type="button" class="btn btn-lg btn-block screenshot">Screenshot &#128248;</button>
-                <hr>
-                <form role="form">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Send keys &#9997;</label>
-                        <textarea id="main-send" cols="20" rows="5"></textarea>
-                        <p class="help-block">Press [Ctrl+Enter] to send; [Ctrl+Backspace] to delete; [Shift+Enter] to
-                            insert a newline;</p>
-                    </div>
-                </form>
-                <hr>
-                <label for="resize" id="resize">Resize Source &#127899;</label>
-                <input type="range" id="size-range">
-                <p class="help-block" id="size-value">Source Size: 50%</p>
-            </div>
+                    </form>
+                </div>
+            </nav>
         </div>
     </div>
+    <div class="row clearfix">
+        <div class="col-md-10 column">
+            <img alt="No Source Please Check!" id="remote" src="http://127.0.0.1:8200" class="img-rounded"
+                 style="width: 50%; height: 50%;"/>
+        </div>
+        <div class="col-md-2 column">
+            <button type="button" class="btn btn-lg btn-block lock">Lock &#128275;</button>
+            <button type="button" class="btn btn-lg btn-block home">Home &#127968;</button>
+            <button type="button" class="btn btn-lg btn-block rotation">Rotation &#128260;</button>
+            <button type="button" class="btn btn-lg btn-block screenshot">Screenshot &#128248;</button>
+            <hr>
+            <form role="form">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Send keys &#9997;</label>
+                    <textarea id="main-send" cols="20" rows="5"></textarea>
+                    <p class="help-block">Press [Ctrl+Enter] to send; [Ctrl+Backspace] to delete; [Shift+Enter] to
+                        insert a newline;</p>
+                </div>
+            </form>
+            <hr>
+            <label for="resize" id="resize">Resize Source &#127899;</label>
+            <input type="range" id="size-range">
+            <p class="help-block" id="size-value">Source Size: 50%</p>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>
