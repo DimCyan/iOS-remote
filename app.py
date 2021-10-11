@@ -2,6 +2,7 @@ from flask import Flask, request, render_template
 from flask_cors import CORS
 import json
 import wda
+import tidevice
 import time
 import os
 import re
@@ -13,12 +14,15 @@ CORS(app, support_crenditals=True, resources={r"/*": {"origins": "*"}}, send_wil
 
 
 def _get_bundle_id():
-    s = str(subprocess.Popen(cmds['applist'], shell=True, stdout=subprocess.PIPE).communicate()[0]).replace('\\r', '').split('\\n')
-    wda_runner = 'WebDriverAgentRunner-Runner'
-    for i in s:
-        if wda_runner in i:
-            wda_runner, _, _ = i.partition(wda_runner)
-    return wda_runner.strip()
+    t = tidevice.Device()
+    target_bundle = ''
+    for info in t.installation.iter_installed():
+        display_name = info['CFBundleDisplayName']
+        if display_name == 'WebDriverAgentRunner-Runner':
+            target_bundle = info['CFBundleIdentifier']
+            return target_bundle
+    if target_bundle == '':
+        raise Exception('No Bundle!!!!')
 
 
 def _get_udid():
@@ -140,8 +144,7 @@ if __name__ == '__main__':
     #     port=8100,
     #     wda_bundle_id=wda_bundle_id)
     path = os.path.abspath('')
-    cmds = {'applist': 'tidevice applist',
-            'device_udid': 'tidevice list --json',
+    cmds = {'device_udid': 'tidevice list --json',
             'remote': 'tidevice relay {0} 9100'}
     client = connect_device()
     app.run(debug=True)
