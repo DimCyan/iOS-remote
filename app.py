@@ -25,18 +25,9 @@ def _get_bundle_id():
         raise Exception('No Bundle!!!!')
 
 
-def _get_udid():
-    udid = re.findall('\\ "udid\"\\:\\ "(.*?)\"', str(subprocess.Popen(cmds['device_udid'], shell=True, stdout=subprocess.PIPE).communicate()[0]))[0]
-    return udid
-
-
 def connect_device():
-    """
-    :return: USBClient
-    """
-    udid = _get_udid()
     bundle_id = _get_bundle_id()
-    c = wda.USBClient(udid=udid, wda_bundle_id=bundle_id)
+    c = wda.USBClient(wda_bundle_id=bundle_id)
     return c
 
 
