@@ -5,7 +5,6 @@ import wda
 import tidevice
 import time
 import os
-import re
 import subprocess
 from logzero import logger
 
@@ -50,7 +49,6 @@ def click():
     data = json.loads(request.form.get('data'))
     disX = float(data['disX'])
     disY = float(data['disY'])
-    print(disX, disY)
     client.click(disX, disY)
     logger.info('click: ({}, {})'.format(disX, disY))
     return "click it"
@@ -126,14 +124,6 @@ def send():
 
 
 if __name__ == '__main__':
-    # with open('device.json', 'r', encoding='utf-8') as f:
-    #     json_data = json.load(f)
-    #     udid = json_data.get('udid')
-    #     wda_bundle_id = json_data.get('wda_bundle_id')
-    # client = wda.USBClient(
-    #     udid=udid,
-    #     port=8100,
-    #     wda_bundle_id=wda_bundle_id)
     path = os.path.abspath('')
     cmds = {'device_udid': 'tidevice list --json',
             'remote': 'tidevice relay {0} 9100'}
