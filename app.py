@@ -114,6 +114,15 @@ def rotation():
     return "switch orientation"
 
 
+
+@app.route('/reboot', methods=['POST'])
+def reboot():
+    t = tidevice.Device()
+    t.reboot()
+    logger.info('Press reboot button to reboot')
+    return "press reboot button"
+
+
 @app.route('/send', methods=['POST'])
 def send():
     data = json.loads(request.form.get('data'))

@@ -132,6 +132,13 @@ window.onload = function () {
             type: 'POST',
         })
     });
+    $(".reboot").click(function () {
+        console.log('click reboot buttom')
+        $.ajax({
+            url: 'http://localhost:5000/reboot',
+            type: 'POST',
+        })
+    });
     $(".rotation").click(function () {
         console.log('switch orientation')
         $.ajax({
