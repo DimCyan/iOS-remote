@@ -13,9 +13,8 @@ CORS(app, support_crenditals=True, resources={r"/*": {"origins": "*"}}, send_wil
 
 
 def _get_bundle_id():
-    t = tidevice.Device()
     target_bundle = ''
-    for info in t.installation.iter_installed():
+    for info in device.installation.iter_installed():
         display_name = info['CFBundleDisplayName']
         if display_name == 'WebDriverAgentRunner-Runner':
             target_bundle = info['CFBundleIdentifier']
@@ -68,10 +67,10 @@ def drag():
 
 @app.route('/home', methods=['POST'])
 def home():
-    client.home()
+    device.instruments.app_launch('com.apple.springboard')
     client.orientation = 'PORTRAIT'
     logger.info('Back to home')
-    return "back to home"
+    return "click home button"
 
 
 @app.route('/backspace', methods=['POST'])
@@ -98,7 +97,8 @@ def lock():
 @app.route('/screenshot', methods=['POST'])
 def screenshot():
     screenshot_name = time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
-    os.system(f'tidevice screenshot {path}/screenshot/{screenshot_name}.png')
+    device.screenshot().convert("RGB").save(f'{path}/screenshot/{screenshot_name}.png')
+    # os.system(f'tidevice screenshot {path}/screenshot/{screenshot_name}.png')
     logger.info('Press screenshot button to screenshot')
     return "press screenshot button"
 
@@ -114,11 +114,9 @@ def rotation():
     return "switch orientation"
 
 
-
 @app.route('/reboot', methods=['POST'])
 def reboot():
-    t = tidevice.Device()
-    t.reboot()
+    device.reboot()
     logger.info('Press reboot button to reboot')
     return "press reboot button"
 
@@ -134,7 +132,9 @@ def send():
 
 if __name__ == '__main__':
     path = os.path.abspath('')
-    cmds = {'device_udid': 'tidevice list --json',
-            'remote': 'tidevice relay {0} 9100'}
+    cmds = {'remote': 'tidevice relay {0} 9100'}
+    device = tidevice.Device()
+    # um = tidevice.Usbmux()
+    # device_udid_list = um.device_udid_list()
     client = connect_device()
     app.run(debug=True)
