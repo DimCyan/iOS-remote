@@ -112,7 +112,7 @@ window.onload = function () {
         $("#remote").attr("src", 'http://127.0.0.1:' + $("#connect-input").val());
     });
     $(".home").click(function () {
-        console.log('click home buttom')
+        console.log('click home button')
         $.ajax({
             url: 'http://localhost:5000/home',
             type: 'POST',
@@ -126,14 +126,14 @@ window.onload = function () {
         })
     });
     $(".screenshot").click(function () {
-        console.log('click screenshot buttom')
+        console.log('click screenshot button')
         $.ajax({
             url: 'http://localhost:5000/screenshot',
             type: 'POST',
         })
     });
     $(".reboot").click(function () {
-        console.log('click reboot buttom')
+        console.log('click reboot button')
         $.ajax({
             url: 'http://localhost:5000/reboot',
             type: 'POST',
